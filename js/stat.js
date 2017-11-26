@@ -11,13 +11,26 @@ window.renderStatistics = function (ctx, names, times) {
   var initialOffsetY = 90; // px;
   var textLineHeight = 15; // px;
   var contentTopIndent = 5; // px;
-  var time = 0;
-  var maxTime = 0;
   var columnWidth = histogramItemWidth; // px;
   var columnHeight = 0; // px;
   var columnOffsetY = 0; // px;
   var timeOffsetY = initialOffsetY + textLineHeight + (contentTopIndent * 2) + maxColumnHeight; // px;
   var histogramItemOffsetX = initialOffsetX; // px;
+  var maxTime;
+
+  var getMax = function (params) {
+    var current;
+    var max = 0;
+
+    for (var i = 0; i < params.length; i++) {
+      current = params[i];
+      if (current > max) {
+        max = current;
+      }
+    }
+
+    return max;
+  };
 
   ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
   ctx.fillRect(110, 20, 420, 270);
@@ -31,12 +44,7 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.fillText('Ура вы победили!', initialOffsetX, 40);
   ctx.fillText('Список результатов:', initialOffsetX, 60);
 
-  for (var i = 0; i < times.length; i++) {
-    time = times[i];
-    if (time > maxTime) {
-      maxTime = time;
-    }
-  }
+  maxTime = getMax(times);
 
   for (var j = 0; j < times.length; j++) {
     columnHeight = maxColumnHeight * times[j] / maxTime;
