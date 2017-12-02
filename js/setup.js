@@ -153,7 +153,7 @@ var index = 1;
 wizardCoat.addEventListener('click', function (event) {
   event.target.style.fill = COAT_COLORS[index];
 
-  index = index < COAT_COLORS.length - 1 ? index++ : index = 0;
+  index = index < COAT_COLORS.length - 1 ? ++index : 0;
 });
 
 wizardEyes.addEventListener('click', function (event) {
