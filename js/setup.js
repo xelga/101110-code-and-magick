@@ -2,8 +2,6 @@
 var ESC_KEYCODE = 27;
 var ENTER_KEYCODE = 13;
 
-var setup = document.querySelector('.setup');
-
 var NAMES = [
   'Иван',
   'Хуан Себастьян',
@@ -92,6 +90,8 @@ similarList.appendChild(createFragment());
 
 var setupSimilar = document.querySelector('.setup-similar');
 setupSimilar.classList.remove('hidden');
+
+var setup = document.querySelector('.setup');
 var setupOpen = document.querySelector('.setup-open');
 var setupClose = setup.querySelector('.setup-close');
 var setupSubmit = setup.querySelector('.setup-submit');
