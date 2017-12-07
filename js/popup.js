@@ -30,6 +30,9 @@
     event.preventDefault();
     setup.classList.add('hidden');
     document.removeEventListener('keydown', onPopupEscPress);
+
+    setup.style.removeProperty('top');
+    setup.style.removeProperty('left');
   };
 
   setupOpen.addEventListener('click', function () {
