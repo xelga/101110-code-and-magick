@@ -6,6 +6,7 @@
 
   dialogHandle.addEventListener('mousedown', function (event) {
     event.preventDefault();
+    var dragged = false;
 
     var startCoords = {
       x: event.clientX,
@@ -14,6 +15,7 @@
 
     var onMouseMove = function (moveEvent) {
       moveEvent.preventDefault();
+      dragged = true;
 
       var shift = {
         x: startCoords.x - moveEvent.clientX,
@@ -34,6 +36,12 @@
 
       document.removeEventListener('mousemove', onMouseMove);
       document.removeEventListener('mouseup', onMouseUp);
+
+      if (dragged) {
+        event.target.addEventListener('click', function (draggEvent) {
+          draggEvent.preventDefault();
+        });
+      }
     };
 
     document.addEventListener('mousemove', onMouseMove);
