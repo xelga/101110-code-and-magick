@@ -27,7 +27,6 @@
   };
 
   var closePopup = function () {
-    event.preventDefault();
     setup.classList.add('hidden');
     document.removeEventListener('keydown', onPopupEscPress);
 

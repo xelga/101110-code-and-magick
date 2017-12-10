@@ -4,9 +4,12 @@
   var setup = document.querySelector('.setup');
   var dialogHandle = setup.querySelector('.upload input');
 
-  dialogHandle.addEventListener('mousedown', function (event) {
+  var onClickPreventDefault = function (event) {
     event.preventDefault();
-    var dragged = false;
+  };
+
+  dialogHandle.addEventListener('mousedown', function (event) {
+    event.target.removeEventListener('click', onClickPreventDefault);
 
     var startCoords = {
       x: event.clientX,
@@ -14,8 +17,7 @@
     };
 
     var onMouseMove = function (moveEvent) {
-      moveEvent.preventDefault();
-      dragged = true;
+      event.target.addEventListener('click', onClickPreventDefault);
 
       var shift = {
         x: startCoords.x - moveEvent.clientX,
@@ -31,17 +33,9 @@
       setup.style.top = (setup.offsetTop - shift.y) + 'px';
     };
 
-    var onMouseUp = function (upEvent) {
-      upEvent.preventDefault();
-
+    var onMouseUp = function () {
       document.removeEventListener('mousemove', onMouseMove);
       document.removeEventListener('mouseup', onMouseUp);
-
-      if (dragged) {
-        event.target.addEventListener('click', function (draggEvent) {
-          draggEvent.preventDefault();
-        });
-      }
     };
 
     document.addEventListener('mousemove', onMouseMove);
