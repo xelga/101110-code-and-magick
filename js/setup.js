@@ -51,4 +51,28 @@
     }
     event.preventDefault();
   });
+
+  var wizardCoat = setup.querySelector('.wizard-coat');
+  var wizardEyes = setup.querySelector('.wizard-eyes');
+  var setupFireball = setup.querySelector('.setup-fireball-wrap');
+
+  var fillElement = function (element, color) {
+    element.style.fill = color;
+  };
+
+  var changeElementBackground = function (element, color) {
+    element.style.backgroundColor = color;
+  };
+
+  wizardCoat.addEventListener('click', function () {
+    window.colorizeElement(wizardCoat, window.util.COAT_COLORS, fillElement);
+  });
+
+  wizardEyes.addEventListener('click', function () {
+    window.colorizeElement(wizardEyes, window.util.EYES_COLORS, fillElement);
+  });
+
+  setupFireball.addEventListener('click', function () {
+    window.colorizeElement(setupFireball, window.util.FIREBALL_COLORS, changeElementBackground);
+  });
 })();
