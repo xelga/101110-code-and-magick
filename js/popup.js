@@ -4,7 +4,6 @@
   var setup = document.querySelector('.setup');
   var setupOpen = document.querySelector('.setup-open');
   var setupClose = setup.querySelector('.setup-close');
-  var setupSubmit = setup.querySelector('.setup-submit');
   var setupUserName = setup.querySelector('.setup-user-name');
 
   var onPopupEscPress = function (event) {
@@ -49,10 +48,4 @@
   });
 
   setupClose.addEventListener('keydown', onPopupEnterPress);
-
-  setupSubmit.addEventListener('click', function () {
-    closePopup();
-  });
-
-  setupSubmit.addEventListener('keydown', onPopupEnterPress);
 })();
